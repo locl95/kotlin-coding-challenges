@@ -4,7 +4,7 @@ import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.Test
 
 private fun equalDigitFrequency(i1: Int, i2: Int): Boolean {
-    TODO("not implemented")
+    return i1.toString().groupBy { it }.mapValues { it.value.size } == i2.toString().groupBy { it }.mapValues {  it.value.size }
 }
 
 private class Test {

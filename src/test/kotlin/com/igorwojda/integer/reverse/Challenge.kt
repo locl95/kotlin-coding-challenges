@@ -4,7 +4,8 @@ import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.Test
 
 private fun reverseInt(i: Int): Int {
-    TODO("not implemented")
+    if(i < 0) return (i * -1).toString().reversed().toInt() * - 1
+    return i.toString().reversed().toInt()
 }
 
 private class Test {

@@ -4,7 +4,12 @@ import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.Test
 
 fun generateSteps(n: Int): List<String> {
-    TODO("not implemented")
+
+    return (1..n).toList().map {
+        val spaces = (1..(n - it)).map { " " }
+        val hash = (1..it).map { "#" }
+        hash.plus(spaces).joinToString("")
+    }
 }
 
 private class Test {

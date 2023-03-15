@@ -4,7 +4,9 @@ import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.Test
 
 private fun fibonacci(n: Int): Int {
-    TODO("not implemented")
+    if (n == 0) return 0
+    if (n == 1) return 1
+    return fibonacci(n-2) + fibonacci(n - 1)
 }
 
 private class Test {

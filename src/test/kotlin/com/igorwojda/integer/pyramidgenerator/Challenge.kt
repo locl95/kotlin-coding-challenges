@@ -4,7 +4,15 @@ import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.Test
 
 fun generatePyramid(n: Int): List<String> {
-    TODO("not implemented")
+    val max = n * 2 - 1
+
+    return (1..n).toList().map {
+        val numOfHash = it * 2 - 1
+        val spaces = (1..(max - numOfHash) / 2).map { " " }
+        val hash = (1..numOfHash).map { "#" }
+        spaces.plus(hash).plus(spaces).joinToString("")
+    }
+
 }
 
 private class Test {
