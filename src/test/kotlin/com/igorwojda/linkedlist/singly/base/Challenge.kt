@@ -1,7 +1,37 @@
 package com.igorwojda.linkedlist.singly.base
 
+import org.amshove.kluent.shouldBeEqualTo
+import org.junit.jupiter.api.Test
+
 private class SinglyLinkedList<E> {
-    // implement
+    var head: Node<E>? = null
+    var size: Int = 0
+    var first: Node<E>? = null
+    var last: Node<E>? = null
+
+    fun insertFirst(v: E): Unit = run {
+        if(this.size == 0) this.last = Node(v, null)
+        this.size = this.size + 1
+        this.head = Node(v, head)
+        this.first = Node(v, head)
+    }
+
+    fun clear() = run {
+        this.head = null
+        this.size = 0
+        this.first = null
+        this.last = null
+    }
+
+    fun removeFirst() = run {
+        this.first = head?.next
+        this.head = head?.next
+        this.size = this.size - 1
+    }
+
+    fun removeLast(): Nothing = run {
+            TODO()
+    }
 }
 
 private data class Node<T>(
@@ -10,95 +40,95 @@ private data class Node<T>(
 )
 
 private class Test {
-//    @Test
-//    fun `when list is created head node is null`() {
-//        SinglyLinkedList<Int>().apply {
-//            head shouldBeEqualTo null
-//        }
-//    }
-//
-//    @Test
-//    fun `append a node to the start of the list`() {
-//        SinglyLinkedList<Int>().apply {
-//            insertFirst(1)
-//            head?.data shouldBeEqualTo 1
-//            insertFirst(2)
-//            head?.data shouldBeEqualTo 2
-//        }
-//    }
-//
-//    @Test
-//    fun `return the number of items in the linked list`() {
-//        SinglyLinkedList<Int>().apply {
-//            size shouldBeEqualTo 0
-//            insertFirst(1)
-//            insertFirst(1)
-//            insertFirst(1)
-//            insertFirst(1)
-//            size shouldBeEqualTo 4
-//        }
-//    }
-//
-//    @Test
-//    fun `return the first element`() {
-//        SinglyLinkedList<Int>().apply {
-//            insertFirst(1)
-//            first?.data shouldBeEqualTo 1
-//            insertFirst(2)
-//            first?.data shouldBeEqualTo 2
-//        }
-//    }
-//
-//    @Test
-//    fun `return the last element`() {
-//        SinglyLinkedList<Int>().apply {
-//            insertFirst(2)
-//            last?.data shouldBeEqualTo 2
-//            last?.next shouldBeEqualTo null
-//            insertFirst(1)
-//            last?.data shouldBeEqualTo 2
-//            last?.next shouldBeEqualTo null
-//        }
-//    }
-//
-//    @Test
-//    fun `empty the list`() {
-//        SinglyLinkedList<Int>().apply {
-//            size shouldBeEqualTo 0
-//            insertFirst(1)
-//            insertFirst(1)
-//            insertFirst(1)
-//            insertFirst(1)
-//            size shouldBeEqualTo 4
-//            clear()
-//            size shouldBeEqualTo 0
-//        }
-//    }
-//
-//    @Test
-//    fun `remove the first node when the list has a size of one`() {
-//        SinglyLinkedList<String>().apply {
-//            insertFirst("a")
-//            removeFirst()
-//            size shouldBeEqualTo 0
-//            first shouldBeEqualTo null
-//        }
-//    }
-//
-//    @Test
-//    fun `remove the first node when the list has a size of three`() {
-//        SinglyLinkedList<String>().apply {
-//            insertFirst("c")
-//            insertFirst("b")
-//            insertFirst("a")
-//            removeFirst()
-//            size shouldBeEqualTo 2
-//            first?.data shouldBeEqualTo "b"
-//            removeFirst()
-//            size shouldBeEqualTo 1
-//            first?.data shouldBeEqualTo "c"
-//        }
-//    }
+    @Test
+    fun `when list is created head node is null`() {
+        SinglyLinkedList<Int>().apply {
+            head shouldBeEqualTo null
+        }
+    }
+
+    @Test
+    fun `append a node to the start of the list`() {
+        SinglyLinkedList<Int>().apply {
+            insertFirst(1)
+            head?.data shouldBeEqualTo 1
+            insertFirst(2)
+            head?.data shouldBeEqualTo 2
+        }
+    }
+
+    @Test
+    fun `return the number of items in the linked list`() {
+        SinglyLinkedList<Int>().apply {
+            size shouldBeEqualTo 0
+            insertFirst(1)
+            insertFirst(1)
+            insertFirst(1)
+            insertFirst(1)
+            size shouldBeEqualTo 4
+        }
+    }
+
+    @Test
+    fun `return the first element`() {
+        SinglyLinkedList<Int>().apply {
+            insertFirst(1)
+            first?.data shouldBeEqualTo 1
+            insertFirst(2)
+            first?.data shouldBeEqualTo 2
+        }
+    }
+
+    @Test
+    fun `return the last element`() {
+        SinglyLinkedList<Int>().apply {
+            insertFirst(2)
+            last?.data shouldBeEqualTo 2
+            last?.next shouldBeEqualTo null
+            insertFirst(1)
+            last?.data shouldBeEqualTo 2
+            last?.next shouldBeEqualTo null
+        }
+    }
+
+    @Test
+    fun `empty the list`() {
+        SinglyLinkedList<Int>().apply {
+            size shouldBeEqualTo 0
+            insertFirst(1)
+            insertFirst(1)
+            insertFirst(1)
+            insertFirst(1)
+            size shouldBeEqualTo 4
+            clear()
+            size shouldBeEqualTo 0
+        }
+    }
+
+    @Test
+    fun `remove the first node when the list has a size of one`() {
+        SinglyLinkedList<String>().apply {
+            insertFirst("a")
+            removeFirst()
+            size shouldBeEqualTo 0
+            first shouldBeEqualTo null
+        }
+    }
+
+    @Test
+    fun `remove the first node when the list has a size of three`() {
+        SinglyLinkedList<String>().apply {
+            insertFirst("c")
+            insertFirst("b")
+            insertFirst("a")
+            removeFirst()
+            size shouldBeEqualTo 2
+            first?.data shouldBeEqualTo "b"
+            removeFirst()
+            size shouldBeEqualTo 1
+            first?.data shouldBeEqualTo "c"
+        }
+    }
 //
 //    @Test
 //    fun `remove the last node when list is empty`() {
